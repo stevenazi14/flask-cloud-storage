@@ -1,20 +1,24 @@
 {% extends "base.html" %}
+
 {% block content %}
   <h2>Upload a File</h2>
-  <form method="POST">
+  <form method="POST" action="{{ url_for('upload') }}">
     <input type="text" name="filename" placeholder="Enter filename" required>
     <button type="submit">Upload</button>
   </form>
+
   <h2>Stored Files</h2>
   <ul>
-    {% for file in files %}
-      <li>
-        {{ file.name }}
-        <a href="{{ url_for('update', file_id=file.id) }}">Update</a>
-        <a href="{{ url_for('delete', file_id=file.id) }}">Delete</a>
-      </li>
+    {% if files %}
+      {% for file in files %}
+        <li>
+          {{ file['name'] }}
+          <a href="{{ url_for('update', file_id=file['id']) }}">Update</a>
+          <a href="{{ url_for('delete', file_id=file['id']) }}">Delete</a>
+        </li>
+      {% endfor %}
     {% else %}
       <li>No files uploaded yet.</li>
-    {% endfor %}
+    {% endif %}
   </ul>
 {% endblock %}

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Storage Simulation</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
@@ -11,7 +12,7 @@
         <h1>Cloud Storage Simulation</h1>
       </header>
       <main>
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock content %}
       </main>
     </div>
   </body>
